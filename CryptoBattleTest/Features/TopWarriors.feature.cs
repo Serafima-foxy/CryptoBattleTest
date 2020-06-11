@@ -35,8 +35,8 @@ namespace CryptoBattleTest.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "TopWarriors", "\tIn order to know top players and aim to the top\r\n\tAs a gamer\r\n\tI want to see top" +
-                    " 10 players", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "TopWarriors", "\tIn order to know top players and aim to the top\r\n\tAs a player\r\n\tI want to see to" +
+                    "p 10 players", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -162,7 +162,8 @@ this.ScenarioInitialize(scenarioInfo);
         [NUnit.Framework.TestCaseAttribute("18", null)]
         [NUnit.Framework.TestCaseAttribute("17", null)]
         [NUnit.Framework.TestCaseAttribute("14", null)]
-        [NUnit.Framework.TestCaseAttribute("12", null)]
+        [NUnit.Framework.TestCaseAttribute("12_A", null)]
+        [NUnit.Framework.TestCaseAttribute("12_B", null)]
         [NUnit.Framework.TestCaseAttribute("11", null)]
         [NUnit.Framework.TestCaseAttribute("8", null)]
         [NUnit.Framework.TestCaseAttribute("7", null)]
@@ -207,7 +208,7 @@ this.ScenarioInitialize(scenarioInfo);
         {
             string[] tagsOfScenario = ((string[])(null));
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Checking player\'s name", null, ((string[])(null)));
-#line 43
+#line 44
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -227,13 +228,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 44
+#line 45
  testRunner.Given("the game crypto-battle is opened in Google Chrome with player autorization", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 45
+#line 46
  testRunner.Then("the player name should be in the name list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 46
+#line 47
  testRunner.Then("the player score should be in the score list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

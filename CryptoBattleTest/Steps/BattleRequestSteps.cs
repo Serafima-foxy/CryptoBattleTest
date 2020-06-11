@@ -12,12 +12,14 @@ namespace CryptoBattleTest.Steps
         public IWebDriver driver;
         public RequestPageModel requestModel;
         public GameMainPageModel gameMainModel;
+        public LogInPageModel logInModel;
         [BeforeScenario]
         public void CreateDriver()
         {
             driver = BaseDriver.GetDriver();
             requestModel = BaseDriver.GetRequestPageModel();
             gameMainModel = BaseDriver.GetGameMainPageModel();
+            logInModel = BaseDriver.GetLogInPageModel();
         }
         [When(@"I click Create Request button")]
         public void WhenIClickCreateRequestButton()
@@ -75,13 +77,55 @@ namespace CryptoBattleTest.Steps
             warSelect.Click();
         }
 
-        [Then(@"the selected icon should be in the warrior card")]
-        public void ThenTheSelectedIconShouldBeInTheWarriorCard()
+        [Then(@"the (.*) should be in the warrior card")]
+        public void ThenTheShouldBeInTheWarriorCard(string selectedIcon)
         {
-            IWebElement iconEl;
-            iconEl = driver.FindElement(requestModel.warriorSelected);
+            IWebElement iconEl = null;
+            switch(selectedIcon)
+            {
+                case "BCH icon":
+                    iconEl = driver.FindElement(requestModel.bchWarriorSelected);
+                    break;
+                case "DASH icon":
+                    iconEl = driver.FindElement(requestModel.dashWarriorSelected);
+                    break;
+                case "EOS icon":
+                    iconEl = driver.FindElement(requestModel.eosWarriorSelected);
+                    break;
+                case "BTC icon":
+                    iconEl = driver.FindElement(requestModel.btcWarriorSelected);
+                    break;
+                case "ETH icon":
+                    iconEl = driver.FindElement(requestModel.ethWarriorSelected);
+                    break;
+                case "LTC icon":
+                    iconEl = driver.FindElement(requestModel.ltcWarriorSelected);
+                    break;
+                case "NEO icon":
+                    iconEl = driver.FindElement(requestModel.neoWarriorSelected);
+                    break;
+                case "ZEC icon":
+                    iconEl = driver.FindElement(requestModel.zecWarriorSelected);
+                    break;
+                case "ZRX icon":
+                    iconEl = driver.FindElement(requestModel.zrxWarriorSelected);
+                    break;
+                case "WAVE icon":
+                    iconEl = driver.FindElement(requestModel.wavesWarriorSelected);
+                    break;
+                case "BAT icon":
+                    iconEl = driver.FindElement(requestModel.batWarriorSelected);
+                    break;
+                case "XMR icon":
+                    iconEl = driver.FindElement(requestModel.xmrWarriorSelected);
+                    break;
+                case "XRP icon":
+                    iconEl = driver.FindElement(requestModel.xrpWarriorSelected);
+                    break;
+            }
             Assert.NotNull(iconEl.Displayed);
         }
+
         [When(@"I click HP points button")]
         public void WhenIClickHPPointsButton()
         {
@@ -124,6 +168,7 @@ namespace CryptoBattleTest.Steps
             }
             Assert.AreEqual(expRes, actRes.Text);
         }
+
         [Then(@"the new card is created")]
         public void ThenTheNewCardIsCreated()
         {
@@ -131,6 +176,7 @@ namespace CryptoBattleTest.Steps
             spinnerIconEl = driver.FindElement(requestModel.spinnerIcon);
             Assert.IsNotNull(spinnerIconEl);
         }
+
         [When(@"I click Logout button")]
         public void WhenIClickLogoutButton()
         {
@@ -139,6 +185,43 @@ namespace CryptoBattleTest.Steps
             logOutEl.Click();
         }
 
+        [Then(@"the Log in button should be in the new card")]
+        public void ThenTheLogInButtonShouldBeInTheNewCard()
+        {
+            IWebElement logInEl;
+            logInEl = driver.FindElement(logInModel.logInInCardButton);
+            Assert.IsNotNull(logInEl);
+        }
+
+        [Then(@"the Create request button is not found")]
+        public void ThenTheCreateRequestButtonIsNotFound()
+        {
+            try
+            {
+                IWebElement buttonEl;
+                buttonEl = driver.FindElement(requestModel.requestButton);
+            }
+            catch
+            {
+                Assert.IsTrue(true);
+            }
+        }
+        [When(@"another player card exist")]
+        public void WhenAnotherPlayerCardExist()
+        {
+            IWebElement anotherCardEl;
+            anotherCardEl = driver.FindElement(requestModel.anotherPlayerCard);
+            Assert.IsNotNull(anotherCardEl);
+        }
+
+        [Then(@"the Connect button should be in that card")]
+        public void ThenTheConnectButtonShouldBeInThatCard()
+        {
+            string expRes = "Connect";
+            IWebElement actRes;
+            actRes = driver.FindElement(requestModel.connectButton);
+            Assert.AreEqual(expRes, actRes.Text);
+        }
 
         [AfterScenario]
         public void CloseBrowser()

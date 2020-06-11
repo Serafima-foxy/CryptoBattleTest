@@ -35,8 +35,8 @@ namespace CryptoBattleTest.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "BattleRequest", "\tIn order to start battle\r\n\tAs a gamer\r\n\tI want to select my warrior and HP point" +
-                    "s", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "BattleRequest", "\tIn order to start battle\r\n\tAs a player\r\n\tI want to select my warrior and HP poin" +
+                    "ts", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -76,20 +76,20 @@ namespace CryptoBattleTest.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Checking warriors selection")]
-        [NUnit.Framework.TestCaseAttribute("BCH", null)]
-        [NUnit.Framework.TestCaseAttribute("DASH", null)]
-        [NUnit.Framework.TestCaseAttribute("EOS", null)]
-        [NUnit.Framework.TestCaseAttribute("BTC", null)]
-        [NUnit.Framework.TestCaseAttribute("ETH", null)]
-        [NUnit.Framework.TestCaseAttribute("LTC", null)]
-        [NUnit.Framework.TestCaseAttribute("NEO", null)]
-        [NUnit.Framework.TestCaseAttribute("ZEC", null)]
-        [NUnit.Framework.TestCaseAttribute("ZRX", null)]
-        [NUnit.Framework.TestCaseAttribute("WAVES", null)]
-        [NUnit.Framework.TestCaseAttribute("BAT", null)]
-        [NUnit.Framework.TestCaseAttribute("XMR", null)]
-        [NUnit.Framework.TestCaseAttribute("XRP", null)]
-        public virtual void CheckingWarriorsSelection(string warrior, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("BCH", "BCH icon", null)]
+        [NUnit.Framework.TestCaseAttribute("DASH", "DASH icon", null)]
+        [NUnit.Framework.TestCaseAttribute("EOS", "EOS icon", null)]
+        [NUnit.Framework.TestCaseAttribute("BTC", "BTC icon", null)]
+        [NUnit.Framework.TestCaseAttribute("ETH", "ETH icon", null)]
+        [NUnit.Framework.TestCaseAttribute("LTC", "LTC icon", null)]
+        [NUnit.Framework.TestCaseAttribute("NEO", "NEO icon", null)]
+        [NUnit.Framework.TestCaseAttribute("ZEC", "ZEC icon", null)]
+        [NUnit.Framework.TestCaseAttribute("ZRX", "ZRX icon", null)]
+        [NUnit.Framework.TestCaseAttribute("WAVES", "WAVES icon", null)]
+        [NUnit.Framework.TestCaseAttribute("BAT", "BAT icon", null)]
+        [NUnit.Framework.TestCaseAttribute("XMR", "XMR icon", null)]
+        [NUnit.Framework.TestCaseAttribute("XRP", "XRP icon", null)]
+        public virtual void CheckingWarriorsSelection(string warrior, string selected_Icon, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Checking warriors selection", null, exampleTags);
@@ -123,20 +123,25 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When(string.Format("I select {0} from list", warrior), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 11
- testRunner.Then("the selected icon should be in the warrior card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the {0} should be in the warrior card", selected_Icon), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Creat new card with selected warrior")]
+        [NUnit.Framework.DescriptionAttribute("Creat new card with selected warrior and HP points")]
         [NUnit.Framework.TestCaseAttribute("BTC", "50", null)]
-        public virtual void CreatNewCardWithSelectedWarrior(string warrior, string hp_Points, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("BAT", "100", null)]
+        [NUnit.Framework.TestCaseAttribute("ZEC", "150", null)]
+        [NUnit.Framework.TestCaseAttribute("XRP", "200", null)]
+        [NUnit.Framework.TestCaseAttribute("EOS", "300", null)]
+        [NUnit.Framework.TestCaseAttribute("ETH", "500", null)]
+        public virtual void CreatNewCardWithSelectedWarriorAndHPPoints(string warrior, string hp_Points, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Creat new card with selected warrior", null, exampleTags);
-#line 31
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Creat new card with selected warrior and HP points", null, exampleTags);
+#line 30
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -156,26 +161,101 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 32
+#line 31
  testRunner.Given("the game crypto-battle is opened in Google Chrome with player autorization", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 33
+#line 32
  testRunner.When("I click Create Request button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 34
+#line 33
  testRunner.When(string.Format("I select {0} from list", warrior), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 35
+#line 34
  testRunner.When("I click HP points button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 36
- testRunner.When(string.Format("I select {0} from list", hp_Points), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 35
+ testRunner.When(string.Format("I select {0} from points list", hp_Points), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 37
+#line 36
  testRunner.When("I click Creat button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 38
+#line 37
  testRunner.Then("the new card is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Cheking Creation request function with logouting player")]
+        public virtual void ChekingCreationRequestFunctionWithLogoutingPlayer()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Cheking Creation request function with logouting player", null, ((string[])(null)));
+#line 48
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 49
+ testRunner.Given("the game crypto-battle is opened in Google Chrome", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 50
+ testRunner.Then("the Create request button is not found", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Checking Connect button to another player")]
+        public virtual void CheckingConnectButtonToAnotherPlayer()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Checking Connect button to another player", null, ((string[])(null)));
+#line 52
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 53
+ testRunner.Given("the game crypto-battle is opened in Google Chrome with player autorization", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 54
+ testRunner.When("another player card exist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 55
+ testRunner.Then("the Connect button should be in that card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -123,14 +123,13 @@
     <Compile Include="POM\LogInPageModel.cs" />
     <Compile Include="POM\RequestPageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Steps\AuthorizationSteps.cs" />
     <Compile Include="Steps\BaseDriver.cs" />
     <Compile Include="Steps\BattleRequestSteps.cs" />
     <Compile Include="Steps\TopWarriorsSteps.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Features\Authorization.feature" />
     <None Include="Features\BattleRequest.feature" />
+    <None Include="Features\CardStatus.feature" />
     <None Include="Features\TopWarriors.feature" />
     <None Include="packages.config" />
   </ItemGroup>
