@@ -10,6 +10,8 @@ using TechTalk.SpecFlow;
 using AutoIt;
 using System.Threading;
 using System.Drawing.Text;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Support.UI;
 
 namespace CryptoBattleTest.Steps
 {
@@ -28,42 +30,55 @@ namespace CryptoBattleTest.Steps
             gameMainModel = BaseDriver.GetGameMainPageModel();
             driver = BaseDriver.GetDriver();
             //driver.Manage().Window.Maximize();
-            //driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(7);
-            //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(7);
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(7);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(7);
             driver.Url = "http://crypto-battle.pp.ua/";
         }
 
         //[Given(@"the game crypto-battle is opened in Google Chrome with player autorization")]
         //public void GivenTheGameCrypto_BattleIsOpenedInGoogleChromeWithPlayerAutorization()
         //{
-        //    IWebElement logInEl;
-        //    IWebElement googleEl;
         //    logInPage = BaseDriver.GetLogInPageModel();
-        //    //IWebDriver driver = new ChromeDriver();
-        //    var url = "http://crypto-battle.pp.ua/";
+        //    IWebElement logInEl;
+        //    System.Environment.SetEnvironmentVariable("webdriver.chrome.driver", @"C:\SERA\PHOTO");
         //    IWebDriver driver = new ChromeDriver();
-        //    driver.Manage().Window.Maximize();
-        //    driver.Navigate().GoToUrl(url);
+        //    driver.Navigate().GoToUrl("http://crypto-battle.pp.ua/");
         //    logInEl = driver.FindElement(logInPage.loginButton);
         //    logInEl.Click();
-        //    //driver.SwitchTo().Alert().Accept();
-        //    //AutoItX.WinWaitActive("Авторизоваться");
-        //    driver.SwitchTo().Alert().Accept();
-        //    string authEl = driver.FindElement(By.XPath("/html/body/div[3]/div/div[1]/div")).Text.ToString();
-        //    driver.SwitchTo().Window(authEl);
-        //    googleEl = driver.FindElement(By.XPath("/html/body/div[3]/div/div[2]/button[2]"));
-        //    googleEl.Click();
-        //    //AutoItX.Run("SciTE.exe", "C:\\Program Files (x86)\\AutoIt3\\SciTE", 1);
-        //    //driver.SwitchTo().Alert().Accept();
+        //    String parentWindow = driver.CurrentWindowHandle;
+        //    driver.FindElement(By.XPath("/html/body/div[3]/div/div[2]/button[2]")).Click();
+        //    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
 
-           
-        //    //driver.SwitchTo().Alert().Accept();
-        //    AutoItX.WinWaitActive("Вход");
-        //    AutoItX.Send("annazabolotnia@gmail.com");
-        //    AutoItX.Send("{Enter}");
-        //    AutoItX.Send("spazierengehenshmel");
-        //    AutoItX.Send("{Enter}");
-        //    Thread.Sleep(1000);
+
+
+        //    //    IWebElement logInEl;
+        //    //    IWebElement googleEl;
+        //    //    logInPage = BaseDriver.GetLogInPageModel();
+        //    //    //IWebDriver driver = new ChromeDriver();
+        //    //    var url = "http://crypto-battle.pp.ua/";
+        //    //    IWebDriver driver = new ChromeDriver();
+        //    //    driver.Manage().Window.Maximize();
+        //    //    driver.Navigate().GoToUrl(url);
+        //    //    logInEl = driver.FindElement(logInPage.loginButton);
+        //    //    logInEl.Click();
+        //    //    //driver.SwitchTo().Alert().Accept();
+        //    //    //AutoItX.WinWaitActive("Авторизоваться");
+        //    //    driver.SwitchTo().Alert().Accept();
+        //    //    string authEl = driver.FindElement(By.XPath("/html/body/div[3]/div/div[1]/div")).Text.ToString();
+        //    //    driver.SwitchTo().Window(authEl);
+        //    //    googleEl = driver.FindElement(By.XPath("/html/body/div[3]/div/div[2]/button[2]"));
+        //    //    googleEl.Click();
+        //    //    //AutoItX.Run("SciTE.exe", "C:\\Program Files (x86)\\AutoIt3\\SciTE", 1);
+        //    //    //driver.SwitchTo().Alert().Accept();
+
+
+        //    //    //driver.SwitchTo().Alert().Accept();
+        //    //    AutoItX.WinWaitActive("Вход");
+        //    //    AutoItX.Send("annazabolotnia@gmail.com");
+        //    //    AutoItX.Send("{Enter}");
+        //    //    AutoItX.Send("spazierengehenshmel");
+        //    //    AutoItX.Send("{Enter}");
+        //    //    Thread.Sleep(1000);
         //}
 
         [Then(@"the Top Warrior should be a label")]
